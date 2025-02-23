@@ -25,7 +25,7 @@ export const DeleteCategoryDialog = ({ categoryID, refetch: refetchCategory }: D
 
   const { mutate: deleteCategory } = api.category.delete.useMutation({
     onSuccess: () => {
-      sonner.success("Todo deleted successfully");
+      sonner.success("Category deleted successfully");
       refetchCategory()
     },
     onError: () => {

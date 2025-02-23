@@ -21,7 +21,7 @@ export const CreateCategoryDialog = ({ refetch: refetchCategory }: CreateCategor
     return (
         <Dialog open={isOpen} onOpenChange={setisOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline">
+                <Button variant="outline" className="px-10">
                     Add Category
                 </Button>
             </DialogTrigger>

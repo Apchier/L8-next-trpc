@@ -11,10 +11,10 @@ import { renderElements } from "@/utils/render-elements";
 import { CategoryPagination } from "../components/CategoryPagination";
 import { CategoryTableBodySkeleton } from "../components/skeleton/CategoryTableBodySkeleton";
 import { CategoryTableItem, CategoryTableNotFoundItem } from "./CategoryTableItem";
-import type { Category } from "@prisma/client";
+import type { CategoryWithValidation } from "../types";
 
 type CategoryTableProps = {
-  categories?: Category[];
+  categories?: CategoryWithValidation[];
   isLoading: boolean;
   refetch: () => void;
 } 

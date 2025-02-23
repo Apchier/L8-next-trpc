@@ -27,7 +27,7 @@ export const CreateCategoryFormInner = ({ formId, onSubmit }: CreateCategoryForm
                     </FormItem>
                 )}
             />
-            <Button type="submit" className="w-[100px] flex self-end">Submit</Button>
+            <Button type="submit" variant={"outline"} className="w-[100px] flex self-end">Submit</Button>
         </form>
     )
 }

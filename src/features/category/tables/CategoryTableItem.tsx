@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { TableCell, TableRow } from "@/components/ui/table"
-import type { Category } from "@prisma/client"
 import { PenIcon } from "lucide-react"
-import { DeleteCategoryDialog } from "../components/action/DeleteTodoDialog"
+import { DeleteCategoryDialog } from "../components/action/DeleteCategoryDialog"
 import Link from "next/link"
+import type { CategoryWithValidation } from "../types"
 
 type CategoryTableItemProps = {
     index: number
-    category: Category
+    category: CategoryWithValidation
     refetch: () => void
 }
 
@@ -18,7 +18,7 @@ export const CategoryTableItem = ({ category, index, refetch: refetchCategory }:
             <TableCell className="w-full">{category.name}</TableCell>
             <TableCell className="flex gap-2">
                 <Link href={`/category/${category.id}/edit`}>
-                    <Button>
+                    <Button variant="outline">
                         <PenIcon />
                     </Button>
                 </Link>

@@ -8,7 +8,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-export const CategoryPagination = () => {
+export const ProductPagination = () => {
   return (
     <Pagination className="bg-background">
       <PaginationContent>

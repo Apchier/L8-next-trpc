@@ -15,15 +15,15 @@ import { api } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-type DeleteCategoryDialogProps = {
-  categoryID: string;
+type DeleteProductDialogProps = {
+  productID: string;
   refetch: () => void
 };
 
-export const DeleteCategoryDialog = ({ categoryID, refetch: refetchCategory }: DeleteCategoryDialogProps) => {
+export const DeleteProductDialog = ({ productID, refetch: refetchCategory }: DeleteProductDialogProps) => {
   const { toast } = useToast()
 
-  const { mutate: deleteCategory } = api.category.delete.useMutation({
+  const { mutate: deleteProduct } = api.product.delete.useMutation({
     onSuccess: () => {
       sonner.success("Todo deleted successfully");
       refetchCategory()
@@ -37,8 +37,8 @@ export const DeleteCategoryDialog = ({ categoryID, refetch: refetchCategory }: D
     }
   })
 
-  const handleDeleteCategory = () => {
-    deleteCategory({ id: categoryID })
+  const handleDeleteProduct = () => {
+    deleteProduct({ id: productID })
   }
 
   return (
@@ -58,7 +58,7 @@ export const DeleteCategoryDialog = ({ categoryID, refetch: refetchCategory }: D
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDeleteCategory}>
+          <AlertDialogAction onClick={handleDeleteProduct}>
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>

@@ -26,7 +26,7 @@ export const EditCategoryFormInner = ({formId, onSubmit}: EditCategoryFormInnerP
                 name="name"
                 render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Todo</FormLabel>
+                        <FormLabel>Category</FormLabel>
                         <FormControl>
                             <Input {...field} />
                         </FormControl>
@@ -34,7 +34,7 @@ export const EditCategoryFormInner = ({formId, onSubmit}: EditCategoryFormInnerP
                     </FormItem>
                 )}
             />
-            <Button type="submit">Update</Button>
+            <Button type="submit" variant={"outline"} className="px-10">Update</Button>
         </form>
     )
 }

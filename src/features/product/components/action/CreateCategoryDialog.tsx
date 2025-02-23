@@ -9,30 +9,30 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { useState } from "react"
-import { CreateCategoryForm } from "../../forms/CreateCategoryForm"
+import { CreateProductForm } from "../../forms/CreateProductForm"
 
-type CreateCategoryDialogProps = {
+type CreateProductDialogProps = {
     refetch: () => void
 }
 
-export const CreateCategoryDialog = ({ refetch: refetchCategory }: CreateCategoryDialogProps) => {
+export const CreateProductDialog = ({ refetch: refetchProduct }: CreateProductDialogProps) => {
     const [isOpen, setisOpen] = useState<boolean>(false)
 
     return (
         <Dialog open={isOpen} onOpenChange={setisOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline">
-                    Add Category
+                <Button variant="outline" className="px-10">
+                    Add Product
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[70%]">
                 <DialogHeader>
                     <DialogTitle>Edit profile</DialogTitle>
                     <DialogDescription>
                         Make changes to your profile here. Click save when youre done.
                     </DialogDescription>
                 </DialogHeader>
-                <CreateCategoryForm formId="create-category-form" refetch={refetchCategory} setIsOpen={setisOpen}/>
+                <CreateProductForm refetch={refetchProduct} setIsOpen={setisOpen}/>
             </DialogContent>
         </Dialog>
     )

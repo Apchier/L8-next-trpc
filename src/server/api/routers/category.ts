@@ -7,7 +7,12 @@ export const categoryRouter = createTRPCRouter({
     getAll: publicProcedure.query(async ({ ctx }) => {
         try {
             const { db } = ctx
-            const categories = await db.category.findMany()
+            const categories = await db.category.findMany({
+                select: {
+                    id: true,
+                    name: true,
+                }
+            })
             return categories
         } catch (error) {
             if (error instanceof TRPCError) {
@@ -47,12 +52,24 @@ export const categoryRouter = createTRPCRouter({
             try {
                 const { db } = ctx
                 const { name } = input
+                const categoryExist = await db.category.count({ where: { name } })
+                if (categoryExist > 0) {
+                    throw new TRPCError({
+                        code: "CONFLICT",
+                        message: `Category ${name} already exist`
+                    })
+                }
                 await db.category.create({
                     data: {
                         ...input,
                         name
+                    },
+                    select: {
+                        name: true,
+                        created_at: true
                     }
                 })
+                
             } catch (error) {
                 if (error instanceof TRPCError) {
                     throw new TRPCError({
@@ -77,16 +94,25 @@ export const categoryRouter = createTRPCRouter({
                 const { id, request } = input
                 const { name } = request
 
-                const categoryExist = await db.category.count({ where: { id } })
+                const categoryExist = await db.category.count({ 
+                    where: { id, name }, 
+                })
 
                 if (categoryExist === 0) {
                     throw new TRPCError({
                         code: "NOT_FOUND",
-                        message: `Category with : ${id} not found`
+                        message: `Category with : ${name} not found`
                     })
                 }
 
-                await db.category.update({ where: { id }, data: { name } })
+                await db.category.update({ 
+                    where: { id }, 
+                    data: { name },
+                    select: {
+                        name: true,
+                        updated_at: true
+                    }
+                })
                 
             } catch (error) {
                 if (error instanceof TRPCError) {

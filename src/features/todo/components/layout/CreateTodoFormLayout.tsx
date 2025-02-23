@@ -28,7 +28,7 @@ export const CreateTodoFormLayout = ({
       </CardHeader>
       <CardContent>{children}</CardContent>
       <CardFooter className="place-content-end">
-        <Button form={formId} disabled={isPending} className="px-10">
+        <Button form={formId} disabled={isPending} variant={"outline"} className="px-10">
           {isPending ? (
             <>
               <Loader2 className="animate-spin" />

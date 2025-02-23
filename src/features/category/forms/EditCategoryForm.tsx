@@ -18,6 +18,8 @@ type EditCategoryFormProps ={
 export const EditCategoryForm = ({id}: EditCategoryFormProps) => {
     const { toast } = useToast()
     const router = useRouter()
+    const utils = api.useUtils()
+
     const form = useForm<UpdateCategoryFormSchema>({
         defaultValues: {
             name: ""
@@ -29,7 +31,8 @@ export const EditCategoryForm = ({id}: EditCategoryFormProps) => {
 
     const { mutate: updateCategory } = api.category.update.useMutation({
         onSuccess: () => {
-            sonner.success("Category updated successfully");
+            sonner.success("Category updated successfully")
+            void utils.category.getAll.invalidate()
             router.push('/category')
         },
         onError: () => {

@@ -11,13 +11,17 @@ export const EditCategoryPage = async ({ params }: EditCategoryPageProps) => {
     const id = (await params).id
     return (
         <PageContainer withHeader withFooter>
-            <SectionContainer>
+            <SectionContainer
+                padded
+                withBackground
+                className="min-h-screen gap-y-10 pt-10"
+            >
                 <div className="w-full min-h-screen mx-auto p-4">
                     <Card className="w-full">
                         <CardHeader>
-                            <CardTitle>Add Category</CardTitle>
+                            <CardTitle>Edit Category</CardTitle>
                             <CardDescription>
-                                Add new category name
+                                Edit new category name
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
